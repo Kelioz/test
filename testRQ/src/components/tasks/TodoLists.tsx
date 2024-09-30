@@ -1,17 +1,19 @@
-import React, { useState } from 'react'
-import { useQuery } from 'react-query'
+import  { useState } from 'react'
+import { useNavigate, useParams } from 'react-router-dom';
 import getUserById from '../query/getUserById';
 import getUserTodoLists from '../query/getUserTodoLists';
-import { deleteUsersUserIdTodoListsTodoListId, deleteUsersUserIdTodosTodoId, postUsersUserIdTodoLists } from '../../api';
+import { deleteUsersUserIdTodoListsTodoListId, postUsersUserIdTodoLists } from '../../api';
 
 
 
 
 function TodoLists() {
-    const userId = '3144cb57-f6bf-4d69-9c67-9dc31f5a2af2';
+    const params:any = useParams();
+    const userId = params.userid;
     const user = getUserById(userId)
     const TodoLists = getUserTodoLists(userId)
     const [title, setTitle] = useState('')
+    const navigate = useNavigate()
 
     async function post(id:string){
         event?.preventDefault()
@@ -39,15 +41,16 @@ function TodoLists() {
                 </thead>
                 <tbody>
                     {TodoLists.length > 0 ? (
-                        TodoLists.map((el, index:number) => (
+                        TodoLists.map((el:any, index:number) => (
                             <tr key={el.id}>
                                 <td>{index + 1}</td>
                                 <td>{el.title}</td>
                                 
 
                                 <td>
-                                    <button  className="btn btn-success btn-sm">Открыть</button>
-                                    <button onClick={()=>{deleteUsersUserIdTodoListsTodoListId(userId, el.id)  }} className="btn btn-danger btn-sm">Удалить</button>
+                                <button onClick={()=>{navigate(`/user/${params.userid}/todoLists/${el.id}`)}}  className="btn btn-success btn-sm">Открыть</button>
+                                <button onClick={()=>{navigate(`/user/${params.userid}/todoLists/${el.id}/update`)}}  className="btn btn-warning btn-sm">Изменить</button>
+                                <button onClick={()=>{deleteUsersUserIdTodoListsTodoListId(userId, el.id)  }} className="btn btn-danger btn-sm">Удалить</button>
                                 </td>
                             </tr>
                         ))
