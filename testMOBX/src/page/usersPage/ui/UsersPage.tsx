@@ -1,15 +1,9 @@
-import React, { useEffect } from 'react'
-import TodoStore from '../../../entites/todo/models/TodoStore'
+import Users from '../../../widgets/Users/Users'
 
 export default function UsersPage() {
-    const {users, getUserList} = TodoStore
 
-    useEffect(()=>{
-        getUserList()
-    },[])
-    
-    console.log(users)
+
   return (
-    <>123</>
+    <Users />
   )
 }
