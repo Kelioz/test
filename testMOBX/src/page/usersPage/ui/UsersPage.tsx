@@ -1,8 +1,6 @@
-import Users from '../../../widgets/Users/Users'
+import Users from '../../../features/usersTable/Users'
 
 export default function UsersPage() {
-
-
   return (
     <Users />
   )

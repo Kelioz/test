@@ -1,9 +1,11 @@
 import React, { useEffect } from 'react';
 import UserStore from '../../entites/user/model/UserStore';
 import { observer } from 'mobx-react-lite';
+import { useNavigate } from 'react-router-dom';
 
 const Users = observer(() => {
     const { users, loading, getUserList} = UserStore;
+    const navigate = useNavigate()
 
     useEffect(() => {
         getUserList();
@@ -12,9 +14,9 @@ const Users = observer(() => {
     return (
         <div className="container mt-5">
             <h2 className="mb-4">Пользователи</h2>
-            <button className="btn btn-success btn-sm">Добавить пользователя</button>
+            <button onClick={()=>{navigate(`/create-user`)}} className="btn btn-success btn-sm">Добавить пользователя</button>
             <table className="table table-bordered">
-                <thead className="thead-light">
+                <thead className="thead-dark">
                     <tr>
                         <th>#</th>
                         <th>Имя</th>
@@ -30,8 +32,8 @@ const Users = observer(() => {
                                 <td>{el.name}</td>
                                 <td>{el.email}</td>
                                 <td>
-                                    <button className="btn btn-success btn-sm">Открыть</button>
-                                    <button className="btn btn-warning btn-sm">Изменить</button>
+                                    <button onClick={()=>{navigate(`/todolist/${el.id}`)}} className="btn btn-success btn-sm">Открыть</button>
+                                    <button onClick={()=>{navigate(`/change-user/${el.id}`)}} className="btn btn-warning btn-sm">Изменить</button>
                                 </td>
                             </tr>
                         ))
