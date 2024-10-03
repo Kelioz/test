@@ -4,6 +4,7 @@ import UsersPage from "../../page/usersPage/ui/UsersPage"
 import AddUserPage from "../../page/addUserPage/ui/AddUserPage"
 import EditUserPage from "../../page/EditUserPage/ui/EditUserPage"
 import TodoLIstPage from "../../page/todoListPage/ui/TodoLIstPage"
+import ChangeTodoListPage from "../../page/changeTodoList/ui/changeTodoListPage"
 
 
 export const AppRouter= () => {
@@ -39,6 +40,14 @@ export const AppRouter= () => {
                 element={
                     <Suspense>
                         <TodoLIstPage />
+                    </Suspense>
+                }
+            />
+            <Route
+                path='/user/:userid/todoLists/:todolistid/update'
+                element={
+                    <Suspense>
+                        <ChangeTodoListPage />
                     </Suspense>
                 }
             />

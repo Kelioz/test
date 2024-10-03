@@ -1,5 +1,5 @@
 import { makeAutoObservable, runInAction } from "mobx";
-import {deleteUsersUserIdTodoListsTodoListId, getUsersUserIdTodoLists, postUsersUserIdTodoLists, Todo, TodoList } from "../../../shared/api/api";
+import {deleteUsersUserIdTodoListsTodoListId, getUsersUserIdTodoLists, postUsersUserIdTodoLists, putUsersUserIdTodoListsTodoListId, Todo, TodoList } from "../../../shared/api/api";
 
 class TodoStore{
     todoList:TodoList[] = [];
@@ -55,6 +55,18 @@ class TodoStore{
         }
     }
     
+    changeTodoList = async (uId:string, lId:string, title:string) =>{
+        this.loading = true;
+        try {
+            await putUsersUserIdTodoListsTodoListId(uId,lId, {title: `${title}` })
+        } catch (error) {
+            if(error instanceof Error) console.log('Ошибка при удалина списка Todolist')
+        }finally{
+            runInAction(()=>{
+                this.loading = false
+            });
+        }
+    }
 
     
 }

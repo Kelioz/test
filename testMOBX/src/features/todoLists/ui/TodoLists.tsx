@@ -39,8 +39,8 @@ const  TodoLists = observer(()=> {
                                 <td>{index + 1}</td>
                                 <td>{el.title}</td>
                                 <td>
-                                <button onClick={()=>{navigate(`/user/${params.userid}/todoLists/${el.id}`)}}  className="btn btn-success btn-sm">Открыть</button>
-                                <button onClick={()=>{navigate(`/user/${params.userid}/todoLists/${el.id}/update`)}}  className="btn btn-warning btn-sm">Изменить</button>
+                                <button onClick={()=>{navigate(`/user/${param.userid}/todoLists/${el.id}`)}}  className="btn btn-success btn-sm">Открыть</button>
+                                <button onClick={()=>{navigate(`/user/${param.userid}/todoLists/${el.id}/update`)}}  className="btn btn-warning btn-sm">Изменить</button>
                                 <button onClick={()=>{removeTodoList(param.userid, el.id)  }} className="btn btn-danger btn-sm">Удалить</button>
                                 </td>
                             </tr>
