@@ -1,26 +1,20 @@
 import { IForm } from "../type/type";
-import { SubmitHandler, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
-import TodoStore from "../../../entites/todo/models/TodoStore";
 import { useNavigate } from "react-router-dom";
+import { onSubmit } from "../model/OnSubmit";
 
 export default function CreateTodo() {
-  const { createTodo } = TodoStore;
   const { register, handleSubmit } = useForm<IForm>({ mode: "onChange" });
   const param = useParams();
   const navigate = useNavigate();
   const userId: string = param.userid || "";
   const todoListId: string = param.todolistid || "";
 
-  const onSubmit: SubmitHandler<IForm> = async (data) => {
-    await createTodo(userId, todoListId, data.title, data.description);
-    return navigate(`/user/${userId}/todoLists/${param.todolistid}/`);
-  };
-
   return (
     <div className="container mt-5">
       <h2>Создания Todo</h2>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmit(navigate, userId, todoListId))}>
         <div className="form-group">
           <label htmlFor="newTitle">Название</label>
           <input

@@ -1,8 +1,8 @@
 import { makeAutoObservable, runInAction } from "mobx";
-import { ArrayOfUsers, getUsers, getUsersUserId, postUsers, putUsersUserId, User } from "../../../shared/api/api";
+import { getUsers, getUsersUserId, postUsers, putUsersUserId, User } from "../../../shared/api/api";
 
 class UserStore {
-    users?: ArrayOfUsers[] = []
+    users?: User[] = []
     user?: User 
     loading: boolean = false;  
 
@@ -24,6 +24,7 @@ class UserStore {
         } finally {
             runInAction(() => {
                 this.loading = false;
+
             });
         }
     };
@@ -51,10 +52,15 @@ class UserStore {
             await postUsers({name:`${name}`, email: `${email}`});
 
         } catch (error) {
-            if (error instanceof Error) console.log('Ошибка при добавлении пользователя:', error.message);
+            if (error instanceof Error) {
+                console.log('Ошибка при добавлении пользователя:', error.message)
+                alert(error.message)
+                }
+
         } finally {
             runInAction(() => {
                 this.loading = false;
+                console.log('всё ок')
             });
         }
     };
@@ -65,7 +71,11 @@ class UserStore {
             await putUsersUserId(id, {name:`${name}`, email: `${email}`});
 
         } catch (error) {
-            if (error instanceof Error) console.log('Ошибка при изменении пользователя:', error.message);
+            if (error instanceof Error) {
+                alert("Ошибка, возможно вы ввели не верный email используйте коректный email например(test@gmail.com)")
+                console.log('Ошибка при изменении пользователя:', error.message)
+                
+            }
         } finally {
             runInAction(() => {
                 this.loading = false;

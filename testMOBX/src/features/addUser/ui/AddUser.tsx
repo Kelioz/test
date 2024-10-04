@@ -1,23 +1,17 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
 import UserStore from "../../../entites/user/model/UserStore";
-import { SubmitHandler, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { IForm } from "../type/type";
+import { onSubmit } from "../model/OnSubmit";
+import { useNavigate } from "react-router-dom";
 
 export default function AddUser() {
-  const { addUser } = UserStore;
   const { register, handleSubmit } = useForm<IForm>({ mode: "onChange" });
-
   const navigate = useNavigate();
-  const onSubmit: SubmitHandler<IForm> = async (data) => {
-    await addUser(data.name, data.email);
-    return navigate(`/`);
-  };
-
+  
   return (
     <div className="container mt-5">
       <h2>Создания пользователя</h2>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmit(navigate))}>
         <div className="form-group">
           <label htmlFor="newTitle">Имя</label>
           <input
