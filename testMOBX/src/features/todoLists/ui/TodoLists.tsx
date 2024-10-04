@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import UserStore from "../../../entites/user/model/UserStore";
 import { useNavigate, useParams } from "react-router-dom";
 import TodoStore from "../../../entites/todo/models/TodoStore";
@@ -11,7 +11,6 @@ const TodoLists = observer(() => {
   const { user, getUserById } = UserStore;
   const param = useParams();
   const userId: string = param.userid || "";
-  const todoListId: string = param.todolistid || "";
 
   useEffect(() => {
     getUserById(userId);
@@ -29,6 +28,7 @@ const TodoLists = observer(() => {
       <button
         onClick={() => {
           addTodoList(userId, title);
+          location.reload();
         }}
         className="btn btn-success btn-sm"
       >
@@ -70,6 +70,7 @@ const TodoLists = observer(() => {
                   <button
                     onClick={() => {
                       removeTodoList(userId, el.id);
+                      location.reload();
                     }}
                     className="btn btn-danger btn-sm"
                   >

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import TodoStore from "../../../entites/todo/models/TodoStore";
 import { useNavigate, useParams } from "react-router-dom";
 import { Toggle } from "./Toggle";
@@ -61,6 +61,7 @@ const Todos = observer(() => {
                   <button
                     onClick={() => {
                       removeTodo(userId, el.id);
+                      location.reload()
                     }}
                     className="btn btn-danger btn-sm"
                   >

@@ -1,4 +1,3 @@
-import { useParams } from "react-router-dom";
 import TodoStore from "../../../entites/todo/models/TodoStore";
 
 export function Toggle(complete: boolean, todoId: string, userid: string) {
@@ -8,6 +7,7 @@ export function Toggle(complete: boolean, todoId: string, userid: string) {
       <button
         onClick={() => {
           toggleComplete(userid, todoId);
+          location.reload();
         }}
         className="btn btn-success btn-sm"
       >
@@ -19,6 +19,7 @@ export function Toggle(complete: boolean, todoId: string, userid: string) {
       <button
         onClick={() => {
           toggleComplete(userid, todoId);
+          location.reload();
         }}
         className="btn btn-danger btn-sm"
       >

@@ -1,4 +1,3 @@
-import React from "react";
 import { IForm } from "../type/type";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
