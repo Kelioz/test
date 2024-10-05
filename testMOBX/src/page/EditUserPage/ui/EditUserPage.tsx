@@ -1,8 +1,5 @@
-import React from 'react'
-import ChangeUser from '../../../features/changeUser/ui/ChangeUser'
+import ChangeUser from "../../../features/User/changeUser/ui/ChangeUser";
 
 export default function EditUserPage() {
-  return (
-    <ChangeUser />
-  )
+  return <ChangeUser />;
 }

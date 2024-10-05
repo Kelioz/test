@@ -1,5 +1,5 @@
 
-import TodoLists from '../../../features/todoLists/ui/TodoLists'
+import TodoLists from '../../../features/Todo/todoLists/ui/TodoLists'
 
 export default function TodoLIstPage() {
  return(

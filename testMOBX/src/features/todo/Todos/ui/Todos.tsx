@@ -1,34 +1,26 @@
-import { useEffect, useState } from "react";
-import UserStore from "../../../entites/user/model/UserStore";
+import { useEffect } from "react";
+import TodoStore from "../../../../entites/todo/models/TodoStore.ts";
 import { useNavigate, useParams } from "react-router-dom";
-import TodoStore from "../../../entites/todo/models/TodoStore";
+import { Toggle } from "./Toggle.tsx";
 import { observer } from "mobx-react-lite";
 
-const TodoLists = observer(() => {
+const Todos = observer(() => {
+  const { todos, getTodos, removeTodo } = TodoStore;
   const navigate = useNavigate();
-  const [title, setTitle] = useState("");
-  const { todoList, addTodoList, getTodoList, removeTodoList } = TodoStore;
-  const { user, getUserById } = UserStore;
   const param = useParams();
   const userId: string = param.userid || "";
+  const todoListId: string = param.todolistid || "";
 
   useEffect(() => {
-    getUserById(userId);
-    getTodoList(userId);
+    getTodos(userId);
   }, []);
 
   return (
     <div className="container mt-5">
-      <h2 className="mb-4">Todo Lists для {user?.name}</h2>
-      <input
-        className="input"
-        value={title}
-        onChange={(event) => setTitle(event.target.value)}
-      />
+      <h2 className="mb-4">Todos </h2>
       <button
         onClick={() => {
-          addTodoList(userId, title);
-          location.reload();
+          navigate(`/user/${userId}/todoLists/${todoListId}/create-todo`);
         }}
         className="btn btn-success btn-sm"
       >
@@ -38,20 +30,29 @@ const TodoLists = observer(() => {
         <thead className="thead-dark">
           <tr>
             <th>#</th>
-            <th>Title</th>
+            <th>Название</th>
+            <th>Состояние</th>
             <th>Действия</th>
           </tr>
         </thead>
         <tbody>
-          {todoList.length > 0 ? (
-            todoList.map((el: any, index: number) => (
+          {todos.length > 0 ? (
+            todos.map((el, index: number) => (
               <tr key={el.id}>
                 <td>{index + 1}</td>
                 <td>{el.title}</td>
                 <td>
+                  {el.completed ? (
+                    <div>Выполнено</div>
+                  ) : (
+                    <div>Не выполнено</div>
+                  )}
+                </td>
+
+                <td>
                   <button
                     onClick={() => {
-                      navigate(`/user/${param.userid}/todoLists/${el.id}`);
+                      navigate(`/user/${userId}/todo/${el.id}`);
                     }}
                     className="btn btn-success btn-sm"
                   >
@@ -59,23 +60,14 @@ const TodoLists = observer(() => {
                   </button>
                   <button
                     onClick={() => {
-                      navigate(
-                        `/user/${param.userid}/todoLists/${el.id}/update`
-                      );
-                    }}
-                    className="btn btn-warning btn-sm"
-                  >
-                    Изменить
-                  </button>
-                  <button
-                    onClick={() => {
-                      removeTodoList(userId, el.id);
-                      location.reload();
+                      removeTodo(userId, el.id);
+                      location.reload()
                     }}
                     className="btn btn-danger btn-sm"
                   >
                     Удалить
                   </button>
+                  {Toggle(el.completed, el.id, userId)}
                 </td>
               </tr>
             ))
@@ -91,4 +83,4 @@ const TodoLists = observer(() => {
     </div>
   );
 });
-export default TodoLists;
+export default Todos;

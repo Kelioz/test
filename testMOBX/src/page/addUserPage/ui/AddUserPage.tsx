@@ -1,8 +1,5 @@
-import React from 'react'
-import AddUser from '../../../features/addUser/ui/AddUser'
+import AddUser from "../../../features/User/addUser/ui/AddUser";
 
 export default function AddUserPage() {
-  return (
-    <AddUser />
-  )
+  return <AddUser />;
 }

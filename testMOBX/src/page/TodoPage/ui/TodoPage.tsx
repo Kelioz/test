@@ -1,5 +1,4 @@
-import Todo from "../../../features/todo/ui/Todo";
-
+import TodoById from "../../../features/Todo/todoById/ui/TodoById";
 export default function TodoPage() {
-  return <Todo />;
+  return <TodoById />;
 }

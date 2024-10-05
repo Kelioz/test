@@ -1,4 +1,3 @@
-import UserStore from "../../../entites/user/model/UserStore";
 import { useForm } from "react-hook-form";
 import { IForm } from "../type/type";
 import { onSubmit } from "../model/OnSubmit";
@@ -7,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 export default function AddUser() {
   const { register, handleSubmit } = useForm<IForm>({ mode: "onChange" });
   const navigate = useNavigate();
-  
+
   return (
     <div className="container mt-5">
       <h2>Создания пользователя</h2>

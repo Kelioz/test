@@ -1,8 +1,8 @@
-import { IForm } from "../type/type";
+import { IForm } from "../type/type.ts";
 import { useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { onSubmit } from "../model/OnSubmit";
+import { onSubmit } from "../model/OnSubmit.ts";
 
 export default function ChangeTodoList() {
   const { register, handleSubmit } = useForm<IForm>({ mode: "onChange" });

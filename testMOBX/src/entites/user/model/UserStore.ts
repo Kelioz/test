@@ -10,10 +10,10 @@ class UserStore {
         makeAutoObservable(this);
     }
 
-    getUserList = async () => {
+    getUserList = async (skip?:number, take?:number) => {
         this.loading = true;
         try {
-            const { data } = await getUsers();
+            const { data } = await getUsers({skip:skip, take:take});
 
 
             runInAction(() => {

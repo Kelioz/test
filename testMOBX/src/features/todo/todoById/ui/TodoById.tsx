@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
-import TodoStore from "../../../entites/todo/models/TodoStore";
+import TodoStore from "../../../../entites/todo/models/TodoStore.ts";
 import { useParams } from "react-router-dom";
 import { observer } from "mobx-react-lite";
 
-const Todo = observer(() => {
+const TodoById = observer(() => {
   const { todo, getTodoById } = TodoStore;
 
   const param = useParams();
@@ -50,4 +50,4 @@ const Todo = observer(() => {
     </div>
   );
 });
-export default Todo;
+export default TodoById;

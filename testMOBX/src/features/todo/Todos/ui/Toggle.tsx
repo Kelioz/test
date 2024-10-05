@@ -1,4 +1,4 @@
-import TodoStore from "../../../entites/todo/models/TodoStore";
+import TodoStore from "../../../../entites/todo/models/TodoStore.ts";
 
 export function Toggle(complete: boolean, todoId: string, userid: string) {
   const { toggleComplete } = TodoStore;
