@@ -1,5 +1,5 @@
 import { makeAutoObservable, runInAction } from "mobx";
-import {ArrayOfTodos, ArrayOfTodoLists, deleteUsersUserIdTodoListsTodoListId, getUsersUserIdTodoLists, postUsersUserIdTodoLists, putUsersUserIdTodoListsTodoListId, Todo, TodoList, getUsersUserIdTodoListsTodoListId, getUsersUserIdTodos, postUsersUserIdTodos, patchUsersUserIdTodosTodoIdToggle, deleteUsersUserIdTodosTodoId, getUsersUserIdTodosTodoId } from "../../../shared/api/api";
+import {deleteUsersUserIdTodoListsTodoListId, getUsersUserIdTodoLists, postUsersUserIdTodoLists, putUsersUserIdTodoListsTodoListId, Todo, TodoList, getUsersUserIdTodos, postUsersUserIdTodos, patchUsersUserIdTodosTodoIdToggle, deleteUsersUserIdTodosTodoId, getUsersUserIdTodosTodoId } from "../../../shared/api/api";
 
 
 
@@ -7,7 +7,7 @@ import {ArrayOfTodos, ArrayOfTodoLists, deleteUsersUserIdTodoListsTodoListId, ge
 class TodoStore{
     todoList:TodoList[] = [];
     todos:Todo[]=[]
-    todo:Todo[]=[];
+    todo: Todo | null = null; 
     loading:boolean = false
 
 
@@ -142,7 +142,7 @@ class TodoStore{
             const { data } = await getUsersUserIdTodosTodoId(id, todoid);
 
             runInAction(() => {
-                this.todo = data || [];
+                this.todo = data;
             });
         } catch (error) {
             if (error instanceof Error) console.log('Ошибка при получении  Todos', error.message);

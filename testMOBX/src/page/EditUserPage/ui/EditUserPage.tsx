@@ -1,4 +1,4 @@
-import ChangeUser from "../../../features/User/changeUser/ui/ChangeUser";
+import ChangeUser from "../../../features/User/ChangeUser/ui/ChangeUser";
 
 export default function EditUserPage() {
   return <ChangeUser />;

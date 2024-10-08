@@ -2,7 +2,7 @@ import { makeAutoObservable, runInAction } from "mobx";
 import { getUsers, getUsersUserId, postUsers, putUsersUserId, User } from "../../../shared/api/api";
 
 class UserStore {
-    users?: User[] = []
+    users: User[] = []
     user?: User 
     loading: boolean = false;  
 

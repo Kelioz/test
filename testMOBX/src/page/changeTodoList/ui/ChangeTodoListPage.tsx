@@ -1,5 +1,4 @@
-import React from 'react'
-import ChangeTodoList from '../../../features/Todo/changeTodoList/ui/ChangeTodoList'
+import ChangeTodoList from '../../../features/Todo/ChangeTodoList/ui/ChangeTodoList'
 
 export default function ChangeTodoListPage() {
   return (

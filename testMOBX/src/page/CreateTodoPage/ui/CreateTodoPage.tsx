@@ -1,4 +1,4 @@
-import CreateTodo from "../../../features/Todo/createTodo/ui/CreateTodo";
+import CreateTodo from "../../../features/Todo/CreateTodo/ui/CreateTodo";
 
 export default function CreateTodoPage() {
   return <CreateTodo />;

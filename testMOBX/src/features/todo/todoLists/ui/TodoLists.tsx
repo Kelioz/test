@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import UserStore from "../../../../entites/user/model/UserStore.ts";
+import UserStore from "../../../../entites/User/model/UserStore.ts";
 import { useNavigate, useParams } from "react-router-dom";
-import TodoStore from "../../../../entites/todo/models/TodoStore.ts";
+import TodoStore from "../../../../entites/Todo/models/TodoStore.ts";
 import { observer } from "mobx-react-lite";
 
 const TodoLists = observer(() => {

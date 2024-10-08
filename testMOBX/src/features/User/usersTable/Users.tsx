@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import UserStore from "../../../entites/user/model/UserStore";
+import { useEffect, useState } from "react";
+import UserStore from "../../../entites/User/model/UserStore";
 import { observer } from "mobx-react-lite";
 import { useNavigate } from "react-router-dom";
 

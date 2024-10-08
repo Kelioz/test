@@ -1,18 +1,26 @@
-import React, { useEffect } from "react";
-import TodoStore from "../../../../entites/todo/models/TodoStore.ts";
+import { useEffect } from "react";
+import TodoStore from "../../../../entites/Todo/models/TodoStore.ts";
 import { useParams } from "react-router-dom";
 import { observer } from "mobx-react-lite";
 
 const TodoById = observer(() => {
-  const { todo, getTodoById } = TodoStore;
+  const { todo, getTodoById, loading } = TodoStore;
 
   const param = useParams();
   const userId: string = param.userid || "";
   const todoId: string = param.todoid || "";
+
   useEffect(() => {
     getTodoById(userId, todoId);
-  }, []);
+  }, [userId, todoId]); // Include dependencies to ensure it runs when parameters change
 
+  if (loading) {
+    return <div>Loading...</div>; // Show loading state
+  }
+
+  if (!todo) {
+    return <div>No Todo found.</div>; // Handle case where todo is not found
+  }
   return (
     <div className="container mt-5">
       <button

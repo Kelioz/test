@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import TodoStore from "../../../../entites/todo/models/TodoStore.ts";
+import TodoStore from "../../../../entites/Todo/models/TodoStore.ts";
 import { useNavigate, useParams } from "react-router-dom";
 import { Toggle } from "./Toggle.tsx";
 import { observer } from "mobx-react-lite";
@@ -61,7 +61,7 @@ const Todos = observer(() => {
                   <button
                     onClick={() => {
                       removeTodo(userId, el.id);
-                      location.reload()
+                      location.reload();
                     }}
                     className="btn btn-danger btn-sm"
                   >

@@ -1,13 +1,13 @@
 import { Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
-import UsersPage from "../../page/usersPage/ui/UsersPage";
-import AddUserPage from "../../page/addUserPage/ui/AddUserPage";
+import UsersPage from "../../page/UsersPage/ui/UsersPage";
+import AddUserPage from "../../page/AddUserPage/ui/AddUserPage";
 import EditUserPage from "../../page/EditUserPage/ui/EditUserPage";
-import TodoLIstPage from "../../page/todoListPage/ui/TodoLIstPage";
-import TodosPage from "../../page/todosPage/ui/TodosPage";
+import TodoLIstPage from "../../page/TodoListPage/ui/TodoLIstPage";
+import TodosPage from "../../page/TodosPage/ui/TodosPage";
 import CreateTodoPage from "../../page/CreateTodoPage/ui/CreateTodoPage";
 import TodoPage from "../../page/TodoPage/ui/TodoPage";
-import ChangeTodoListPage from "../../page/changeTodoList/ui/ChangeTodoListPage";
+import ChangeTodoListPage from "../../page/ChangeTodoList/ui/ChangeTodoListPage";
 
 export const AppRouter = () => {
   return (
